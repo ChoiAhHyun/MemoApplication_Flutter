@@ -32,7 +32,7 @@ class _ListPageState extends State<ListPage> {
       appBar: AppBar(
         title: Text(widget.title),
         actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.add), onPressed: () => {} )
+          new IconButton(icon: Image.asset('assets/baseline_add_white_36.png'), onPressed: () => {} )
         ],
       ),
       backgroundColor: Colors.grey,

@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'detail_page.dart';
-import 'edit_page.dart';
+import 'add_page.dart';
 
 class ListPage extends StatefulWidget {
   @override
@@ -17,12 +17,7 @@ class _ListPageState extends State<ListPage> {
         actions: <Widget>[
           new IconButton(
             icon: Image.asset('assets/baseline_add_white_24.png'),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => EditPage()),
-              );
-            },
+            onPressed: () => _addMemo(),
           ),
         ],
       ),
@@ -42,7 +37,7 @@ class _ListPageState extends State<ListPage> {
             itemBuilder: (BuildContext context, int index) {
               return InkResponse(
                 onTap: () =>
-                    _onItemClicked(snapshot.data.documents[index].documentID),
+                    _clickMemo(snapshot.data.documents[index].documentID),
                 child: Container(
                   margin: EdgeInsets.all(1),
                   decoration: BoxDecoration(
@@ -89,12 +84,18 @@ class _ListPageState extends State<ListPage> {
     );
   }
 
-  void _onItemClicked(String documentID) {
+  void _addMemo() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddPage()),
+    );
+  }
+
+  void _clickMemo(String documentID) {
     Navigator.push(
       context,
       MaterialPageRoute(
           builder: (context) => DetailPage(documentID: documentID)),
     );
   }
-
 }

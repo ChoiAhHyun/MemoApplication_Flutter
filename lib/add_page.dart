@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class EditPage extends StatelessWidget {
+class AddPage extends StatelessWidget {
 
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();

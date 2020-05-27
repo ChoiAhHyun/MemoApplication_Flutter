@@ -1,6 +1,11 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class EditPage extends StatelessWidget {
+
+  final _titleController = TextEditingController();
+  final _contentController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +21,11 @@ class EditPage extends StatelessWidget {
           IconButton(
             icon: Image.asset('assets/baseline_done_white_24.png'),
             onPressed: () {
-              Navigator.of(context).pop(true);
+              Firestore.instance.collection("memo").add({
+                "title": _titleController.text,
+                "content": _contentController.text,
+              });
+              Navigator.pop(context);
             },
           ),
         ],
@@ -27,8 +36,7 @@ class EditPage extends StatelessWidget {
           children: <Widget>[
             _buildTitleInput(),
             Expanded(
-              child:
-              _buildContentInput(),
+              child: _buildContentInput(),
             ),
           ],
         ),
@@ -39,7 +47,7 @@ class EditPage extends StatelessWidget {
   Widget _buildTitleInput() {
     return Container(
       child: TextField(
-        //onChanged: (text) => _title = text,
+        controller: _titleController,
         maxLines: 1,
         style: TextStyle(
           fontWeight: FontWeight.bold,
@@ -64,7 +72,7 @@ class EditPage extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 1),
       child: TextField(
-        //onChanged: (text) => _content = text,
+        controller: _contentController,
         expands: true,
         maxLines: null,
         style: TextStyle(

@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'edit_page.dart';
+
 class DetailPage extends StatefulWidget {
   final String documentID;
 
@@ -26,11 +28,11 @@ class _DetailPageState extends State<DetailPage> {
         actions: <Widget>[
           IconButton(
             icon: Image.asset('assets/baseline_delete_white_24.png'),
-            onPressed: () {},
+            onPressed: () => _deleteMemo(),
           ),
           IconButton(
             icon: Image.asset('assets/baseline_edit_white_24.png'),
-            onPressed: () {},
+            onPressed: () => _editMemo(),
           ),
         ],
       ),
@@ -72,4 +74,18 @@ class _DetailPageState extends State<DetailPage> {
       ),
     );
   }
+
+  void _deleteMemo() {
+    Firestore.instance.collection("memo").document(widget.documentID).delete();
+    Navigator.pop(context);
+  }
+
+  void _editMemo() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => EditPage(documentID: widget.documentID)),
+    );
+  }
+
 }

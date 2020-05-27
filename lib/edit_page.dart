@@ -24,6 +24,7 @@ class EditPage extends StatelessWidget {
               Firestore.instance.collection("memo").add({
                 "title": _titleController.text,
                 "content": _contentController.text,
+                "datetime": Timestamp.now(),
               });
               Navigator.pop(context);
             },

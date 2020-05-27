@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AddPage extends StatelessWidget {
-
   final _titleController = TextEditingController();
   final _contentController = TextEditingController();
 
@@ -32,21 +31,24 @@ class AddPage extends StatelessWidget {
         ],
       ),
       backgroundColor: Colors.grey,
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            _buildTitleInput(),
-            Expanded(
-              child: _buildContentInput(),
-            ),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _buildTitleInput(),
+          Expanded(
+            child: _buildContentInput(),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildTitleInput() {
     return Container(
+      padding: EdgeInsets.only(left: 14, right: 14, top: 4, bottom: 4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
       child: TextField(
         controller: _titleController,
         maxLines: 1,
@@ -62,8 +64,7 @@ class AddPage extends StatelessWidget {
             color: Colors.grey,
             fontSize: 18,
           ),
-          filled: true,
-          fillColor: Colors.white,
+          border: InputBorder.none,
         ),
       ),
     );
@@ -72,6 +73,10 @@ class AddPage extends StatelessWidget {
   Widget _buildContentInput() {
     return Container(
       margin: EdgeInsets.only(top: 1),
+      padding: EdgeInsets.only(left: 14, right: 14, top: 4, bottom: 4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
       child: TextField(
         controller: _contentController,
         expands: true,
@@ -86,8 +91,7 @@ class AddPage extends StatelessWidget {
             color: Colors.grey,
             fontSize: 17,
           ),
-          filled: true,
-          fillColor: Colors.white,
+          border: InputBorder.none,
         ),
       ),
     );

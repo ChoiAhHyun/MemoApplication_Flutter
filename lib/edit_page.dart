@@ -55,21 +55,24 @@ class _EditPageState extends State<EditPage> {
         ],
       ),
       backgroundColor: Colors.grey,
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            _buildTitleInput(),
-            Expanded(
-              child: _buildContentInput(),
-            ),
-          ],
-        ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          _buildTitleInput(),
+          Expanded(
+            child: _buildContentInput(),
+          ),
+        ],
       ),
     );
   }
 
   Widget _buildTitleInput() {
     return Container(
+      padding: EdgeInsets.only(left: 14, right: 14, top: 4, bottom: 4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
       child: TextField(
         controller: _titleController,
         maxLines: 1,
@@ -85,8 +88,9 @@ class _EditPageState extends State<EditPage> {
             color: Colors.grey,
             fontSize: 18,
           ),
-          filled: true,
-          fillColor: Colors.white,
+//          filled: true,
+//          fillColor: Colors.white,
+          border: InputBorder.none,
         ),
       ),
     );
@@ -95,6 +99,10 @@ class _EditPageState extends State<EditPage> {
   Widget _buildContentInput() {
     return Container(
       margin: EdgeInsets.only(top: 1),
+      padding: EdgeInsets.only(left: 14, right: 14, top: 4, bottom: 4),
+      decoration: BoxDecoration(
+        color: Colors.white,
+      ),
       child: TextField(
         controller: _contentController,
         expands: true,
@@ -109,8 +117,9 @@ class _EditPageState extends State<EditPage> {
             color: Colors.grey,
             fontSize: 17,
           ),
-          filled: true,
-          fillColor: Colors.white,
+//          filled: true,
+//          fillColor: Colors.white,
+          border: InputBorder.none,
         ),
       ),
     );

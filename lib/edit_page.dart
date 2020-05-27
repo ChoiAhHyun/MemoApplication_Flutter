@@ -15,6 +15,18 @@ class _EditPageState extends State<EditPage> {
   final _contentController = TextEditingController();
 
   @override
+  void initState() {
+    Firestore.instance
+        .collection("memo")
+        .document(widget.documentID)
+        .get()
+        .then((document) {
+      _titleController.text = document["title"];
+      _contentController.text = document["content"];
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -29,7 +41,10 @@ class _EditPageState extends State<EditPage> {
           IconButton(
             icon: Image.asset('assets/baseline_done_white_24.png'),
             onPressed: () {
-              Firestore.instance.collection("memo").add({
+              Firestore.instance
+                  .collection("memo")
+                  .document(widget.documentID)
+                  .updateData({
                 "title": _titleController.text,
                 "content": _contentController.text,
                 "datetime": Timestamp.now(),

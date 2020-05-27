@@ -14,8 +14,11 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  String _titleText = "", _contentText = "";
+
   @override
   Widget build(BuildContext context) {
+    _getValues();
     return Scaffold(
       appBar: AppBar(
         title: Text('MemoApp'),
@@ -46,7 +49,7 @@ class _DetailPageState extends State<DetailPage> {
               color: Colors.white,
             ),
             child: Text(
-              widget.documentID,
+              _titleText,
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
@@ -62,7 +65,7 @@ class _DetailPageState extends State<DetailPage> {
                 color: Colors.white,
               ),
               child: Text(
-                widget.documentID,
+                _contentText,
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 17,
@@ -73,6 +76,19 @@ class _DetailPageState extends State<DetailPage> {
         ],
       ),
     );
+  }
+
+  void _getValues() {
+    Firestore.instance
+        .collection("memo")
+        .document(widget.documentID)
+        .get()
+        .then((document) {
+      setState(() {
+        _titleText = document["title"];
+        _contentText = document["content"];
+      });
+    });
   }
 
   void _deleteMemo() {

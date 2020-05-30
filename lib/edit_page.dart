@@ -54,7 +54,7 @@ class _EditPageState extends State<EditPage> {
           ),
         ],
       ),
-      backgroundColor: Colors.grey,
+      backgroundColor: Color(0xffcccccc),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -85,7 +85,7 @@ class _EditPageState extends State<EditPage> {
           hintText: "제목을 입력해주세요",
           hintStyle: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Colors.grey,
+            color: Color(0xffcccccc),
             fontSize: 18,
           ),
 //          filled: true,
@@ -114,7 +114,7 @@ class _EditPageState extends State<EditPage> {
         decoration: InputDecoration(
           hintText: "내용을 입력해주세요",
           hintStyle: TextStyle(
-            color: Colors.grey,
+            color: Color(0xffcccccc),
             fontSize: 17,
           ),
 //          filled: true,

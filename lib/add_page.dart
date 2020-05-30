@@ -30,7 +30,7 @@ class AddPage extends StatelessWidget {
           ),
         ],
       ),
-      backgroundColor: Colors.grey,
+      backgroundColor: Color(0xffcccccc),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -61,7 +61,7 @@ class AddPage extends StatelessWidget {
           hintText: "제목을 입력해주세요",
           hintStyle: TextStyle(
             fontWeight: FontWeight.bold,
-            color: Colors.grey,
+            color: Color(0xffcccccc),
             fontSize: 18,
           ),
           border: InputBorder.none,
@@ -88,7 +88,7 @@ class AddPage extends StatelessWidget {
         decoration: InputDecoration(
           hintText: "내용을 입력해주세요",
           hintStyle: TextStyle(
-            color: Colors.grey,
+            color: Color(0xffcccccc),
             fontSize: 17,
           ),
           border: InputBorder.none,

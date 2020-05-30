@@ -21,7 +21,7 @@ class _ListPageState extends State<ListPage> {
           ),
         ],
       ),
-      backgroundColor: Colors.grey,
+      backgroundColor: Color(0xffcccccc),
       body: StreamBuilder(
         stream: Firestore.instance
             .collection("memo")
@@ -50,26 +50,27 @@ class _ListPageState extends State<ListPage> {
                         margin: EdgeInsets.only(left: 14, right: 14, top: 14),
                         child: Text(
                           snapshot.data.documents[index]["title"],
-                          maxLines: 1,
+                          maxLines: 2,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.black,
                             fontSize: 18,
                           ),
-                          softWrap: false,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.only(
-                            left: 14, right: 14, top: 14, bottom: 14),
-                        child: Text(
-                          snapshot.data.documents[index]["content"],
-                          maxLines: 5,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 17,
+                      Flexible(
+                        child: Container(
+                          margin: EdgeInsets.only(
+                              left: 14, right: 14, top: 14, bottom: 14),
+                          child: Text(
+                            snapshot.data.documents[index]["content"],
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
+                            overflow: TextOverflow.ellipsis,
                           ),
-                          softWrap: false,
                         ),
                       ),
                     ],
